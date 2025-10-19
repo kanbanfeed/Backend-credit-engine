@@ -62,14 +62,20 @@ export async function handleCreditBalance(req: Request, res: Response) {
         .status(400)
         .json({ success: false, message: "Email missing", data: {} });
     }
-
-    const userData = await prisma.transaction.findMany({
+    const stats = await prisma.transaction.aggregate({
       where: {
-        userEmail: userEmail,
+        userEmail,
+      },
+      _count: {
+        id: true,
+      },
+      _sum: {
+        amount: true,
+        credits: true,
       },
     });
 
-    if (!userData || userData.length === 0) {
+    if (!stats) {
       return res.status(404).json({
         success: false,
         message: "No entries of the person found with particular email",
@@ -77,9 +83,15 @@ export async function handleCreditBalance(req: Request, res: Response) {
       });
     }
 
-    return res
-      .status(200)
-      .json({ success: true, message: "Entry found", data: userData });
+    return res.status(200).json({
+      success: true,
+      message: "Entry found",
+      data: {
+        totalTransactions: stats._count.id,
+        amountTransaction: stats._sum.amount || 0,
+        creditsIssued: stats._sum.credits || 0,
+      },
+    });
   } catch (error) {
     console.error("Error in handleCreditBalance:", error);
     if (error instanceof Error) {

@@ -10,12 +10,15 @@ interface UseAxiosGetOptions {
   staleTime?: number;
   cacheTime?: number;
   skip?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
 
 interface UseAxiosGetResult {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
   isLoading: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   error: any;
   refetch: () => void;
 }

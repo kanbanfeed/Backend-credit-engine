@@ -1,16 +1,22 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAxiosGet } from "@/hooks/useAxios";
+import { useEffect } from "react";
 
 interface UserData {
   id: string;
   userEmail: string;
   amount: number;
+  credits: number;
   createdAt: string;
 }
 
 export function UsersTable() {
   const { data: usersData, isLoading } = useAxiosGet("/api/user-info");
+
+  useEffect(() => {
+    console.log("Users Data:", usersData);
+  }, [usersData]);
 
   if (isLoading) {
     return <div>Loading users...</div>;
@@ -21,7 +27,6 @@ export function UsersTable() {
   }
 
   const recentUsers = usersData.data;
-
   return (
     <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
       <CardHeader>
@@ -45,6 +50,9 @@ export function UsersTable() {
                 </th>
                 <th className="px-4 py-3 text-left text-xs font-semibold text-muted-foreground">
                   Amount (USD)
+                </th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-muted-foreground">
+                  User Credits
                 </th>
               </tr>
             </thead>
@@ -82,6 +90,9 @@ export function UsersTable() {
                     >
                       {`$${user.amount.toFixed(2)}`}
                     </span>
+                  </td>
+                  <td className="px-4 py-4 text-sm text-muted-foreground">
+                    {user.credits}
                   </td>
                 </tr>
               ))}
