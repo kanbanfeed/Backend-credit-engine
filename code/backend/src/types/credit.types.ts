@@ -1,4 +1,4 @@
-export interface Transaction {
+export interface Credit {
   userEmail: String;
   amount: Number;
   stripeCheckoutId: String;
