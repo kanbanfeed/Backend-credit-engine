@@ -32,7 +32,7 @@ export const useAxiosGet = (
   const { data, error, isLoading, refetch } = useQuery({
     queryKey,
     queryFn: async () => {
-      const response = await axios.get(`http://localhost:9000${url}`, {
+      const response = await axios.get(`https://backend-credit-engine.onrender.com${url}`, {
         withCredentials: options.withCredentials ?? true,
         headers: {
           ...options.headers,
