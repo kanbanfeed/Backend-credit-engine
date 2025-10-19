@@ -1,6 +1,6 @@
 export interface Credit {
-  userEmail: String;
-  amount: Number;
-  stripeCheckoutId: String;
-  stripeCustomerId: String;
+  userEmail: string;
+  amount: number;
+  stripeCheckoutId: string;
+  stripeCustomerId: string;
 }
