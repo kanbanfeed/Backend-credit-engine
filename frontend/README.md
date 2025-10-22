@@ -58,7 +58,7 @@ Backend-Credit-Engine/
 
 ## ⚡ Live Demo
 
-* **Backend API:** [https://backend-credit-engine-gnhn.onrender.com/](https://backend-credit-engine-gnhn.onrender.com/)
+* **Backend :** [https://backend-credit-engine-gnhn.onrender.com/](https://backend-credit-engine-gnhn.onrender.com/)
 * **Frontend:** [https://frontend-credit-engine.onrender.com/](https://frontend-credit-engine.onrender.com/)
 
 ---
