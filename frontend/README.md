@@ -1,16 +1,131 @@
-# React + Vite
+# Backend-Credit-Engine
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack credit management system that allows tracking of user transactions, credits issued, and user management. The project is built with **Node.js, Express, SQLite** for the backend and **React + Vite + Tailwind CSS** for the frontend.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- Manage transactions with amount and credits
+- View recent users and statistics
+- Fully responsive frontend dashboard
+- REST API endpoints for backend operations
+- Deployed live for testing and demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Backend:**
+- Node.js
+- Express
+- SQLite3
+- Cors
+- Body-parser
+- Dotenv
+- Nodemon (dev)
+
+**Frontend:**
+- React.js
+- Vite
+- TailwindCSS
+- Heroicons
+
+---
+
+## 📦 Project Structure
+
+```
+
+Backend-Credit-Engine/
+├── backend/             # Node.js backend
+│   ├── src/
+│   │   └── app.js
+│   ├── package.json
+│   └── .env
+├── frontend/            # React frontend
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── components/
+│   │   └── index.css
+│   ├── package.json
+│   └── vite.config.js
+└── README.md
+
+````
+
+---
+
+## ⚡ Live Demo
+
+- Backend API: [https://backend-credit-engine.onrender.com](https://backend-credit-engine.onrender.com) *(dummy link)*  
+- Frontend: [https://frontend-credit-engine.onrender.com](https://frontend-credit-engine.onrender.com) *(dummy link)*
+
+---
+
+## 📌 API Endpoints
+
+**Base URL:** `https://backend-credit-engine.onrender.com/api`
+
+### Transactions
+
+- **GET** `/transactions`  
+  Get all transactions.
+
+- **POST** `/transactions`  
+  Add a new transaction.  
+  **Request Body Example:**
+  ```json
+  {
+    "email": "alice@example.com",
+    "amount": 50,
+    "credits": 50,
+    "timestamp": "2025-10-20 10:00"
+  }
+````
+
+### Users
+
+* **GET** `/users`
+  Get the list of all users.
+
+* **POST** `/users`
+  Add a new user.
+  **Request Body Example:**
+
+  ```json
+  {
+    "name": "Alice",
+    "email": "alice@example.com"
+  }
+  ```
+
+### Stats
+
+* **GET** `/stats`
+  Get overall statistics like total transactions, total credits, and last 10 users.
+
+---
+
+## 💻 Setup Instructions
+
+### Backend
+
+```bash
+cd backend
+npm install
+npm run dev   # start server with nodemon
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev   # start Vite dev server
+```
+
+Open the frontend in browser at `http://localhost:5173` (default Vite port).
+
+---
+
